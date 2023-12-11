@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="addressServlet" method="post">
+    Name: <input class="Name" name="name" type="text">
+    <br>
+
+    Street: <input class="Street" name="Street" type="text">
+    <br>
+
+    City: <input class="City" name="City" type="text">
+    <br>
+
+    State: <input class="State" name="State" type="text">
+    <br>
+
+    Zip: <input class="Zip" name="zip" type="text">
+    <br>
+
+    <input class="submit" type="submit" value="Add">
+</form>
+
+</body>
+<script>
+    let submit = document.querySelector('submit');
+
+    let name = document.querySelector('Name').innerHTML;
+    let street = document.querySelector('Street').innerHTML;
+    let city = document.querySelector('City').innerHTML;
+    let state = document.querySelector('State').innerHTML;
+    let zip = document.querySelector('Zip').innerHTML;
+    console.log(name)
+
+    submit.addEventListener('click', () => {
+        let init = {
+            method: 'post',
+            mode: "cors",
+            body: {
+                name, state, city, street, zip,
+                me: 'add'
+            }
+        }
+        fetch(`http://localhost:8080`, init
+        ).then(res => {
+            if (res.status == 200) {
+
+            }
+        }, reason => {
+            console.log(reason)
+        })
+    })
+    // ?method=post&name=${name}&street=${street}&&&
+
+</script>
+</html>
